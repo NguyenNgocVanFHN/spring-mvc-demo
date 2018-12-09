@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="app.model">
+	<class name="Author" table="author">
+	 	<id name="id" column="id" type="java.lang.Integer">
+	 		<generator class="identity"></generator>
+	 	</id>
+	 	<property name="name" column="name_author" type="java.lang.String" />
+	 	<list name="books" table="book" inverse="true" lazy="true" fetch="select">
+	 		<key>
+	 			<column name="id_author"></column>
+	 		</key>
+	 		<list-index column="id" base="1" />
+	 		<one-to-many class="Book"/>
+	 	</list>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="app.model">
+	<class name="Borrow" table="borrow">
+		<id name="id" column="id" type="java.lang.Integer">
+			<generator class="identity" />
+		</id>
+		<property name="borrowDate" column="borrow_date" type="java.sql.Date" />
+		<property name="state" column="state" type="java.lang.Integer" />
+		<many-to-one name="reader" class="Reader" fetch="select" />
+		<many-to-one name="book" class="Book" fetch="select"/>
+	</class>
+</hibernate-mapping>
