@@ -26,19 +26,19 @@ public class IndexController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showLogin(Model model) {
-		model.addAttribute("user", new Reader());
-		return "login";
+/*		model.addAttribute("user", new Reader());*/
+		model.addAttribute("book", new Book());
+		model.addAttribute("listBook", bookService.loadBooks());
+		return "listBook";
 	}
 
 	@RequestMapping(value = "checkLogin", method = RequestMethod.POST)
 	public String checkLogin(@ModelAttribute("user") Reader user, Model model) {
 		Reader userCheck = readerService.checkLogin(user);
 		if (userCheck == null) {
-			model.addAttribute("err", "login error");
-			return "login";
+			return "redirect:/";
 		}
-		model.addAttribute("book", new Book());
-		model.addAttribute("listBook", bookService.loadBooks());
+
 		return "redirect:/listBook";
 	}
 
@@ -50,11 +50,12 @@ public class IndexController {
 	}
 
 	@RequestMapping(value = "searchActionUrl", method = RequestMethod.GET)
-	public String searchBook(@Valid @ModelAttribute("book") Book book, Model model, BindingResult bindingResult) {
+	public String searchBook(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			return "listBook";
 		}
-
-		return "redirect:/listBook";
+		model.addAttribute("book", new Book());
+		model.addAttribute("listBook", bookService.searchBooks(book.getName(), book.getPrice()));
+		return "listBook";
 	}
 }

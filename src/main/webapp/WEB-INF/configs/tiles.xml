@@ -12,12 +12,22 @@
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer"
 			value="/views/layout/footer.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="/assets/css/bootstrap.min.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute
+				value="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" />
+			<add-attribute
+				value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
+		</put-list-attribute>
 	</definition>
-	
+
 	<!-- Login -->
 	<definition name="login" extends="baseLayout">
-		<put-attribute name="title" value="LOGIN"/>
+		<put-attribute name="title" value="LOGIN" />
 		<put-attribute name="body" value="/views/login.jsp" />
+
 	</definition>
 
 	<!-- List Books -->

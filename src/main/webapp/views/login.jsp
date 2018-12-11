@@ -6,13 +6,18 @@
 <div class="container" style="margin-top: 50px">
 	<div class="row">
 		<div class="md-col-8">
-			<form:form action="checkLogin" method="POST" modelAttribute="user">
-				<form:input path="userName"/>
+			<form action="checkLogin" method="POST" modelAttribute="user">
+				<span>Tên đăng nhập</span>
+				<input type="text" />
 				<br/> <br/>
-				<form:input path="passWord"/>
+				<span>Mật khẩu</span>
+				<input type="password"/>
 				<br/> <br/>
-				<input type="submit" value="Login" /> 
-			</form:form>
+				<input type="checkbox" />
+				<span>Lưu mật khẩu</span>
+				<br/> <br/>
+				<input type="submit" value="Đăng nhập" /> 
+			</form>
 		</div>
 	</div>
 </div>

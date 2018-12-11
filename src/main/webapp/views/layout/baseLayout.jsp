@@ -13,13 +13,23 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<spring:url value="/assets/css/bootstrap.min.css" var="bootstrapCss" />
-<spring:url value="/assets/js/bootstrap.min.js" var="bootstrapJs" />
-<spring:url value="/assets/js/jquery.min.js" var="jquery" />
 
-<link rel="stylesheet" href="${bootstrapCss}" />
-<script src="${jquery}" type="text/javascript"></script>
-<script src="${bootstrapJs}" type="text/javascript"></script>
+<tilesx:useAttribute name="css" id="listCss" classname="java.util.List" />
+<c:forEach items="${listCss}" var="item">
+	<link rel="stylesheet" href="<c:url value='${item}'/>" type="text/css"
+		media="screen" />
+</c:forEach>
+
+<tilesx:useAttribute name="js" id="listJs" classname="java.util.List" />
+<c:forEach var="item" items="${listJs}">
+	<script src="<c:url value='${item}'/>" type="text/javascript"></script>
+</c:forEach>
+
+<style type="text/css">
+.error {
+	color: red;
+}
+</style>
 
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 </head>

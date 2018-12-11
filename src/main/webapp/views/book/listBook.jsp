@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<div class="container" style="margin-top: 50px">
+<div class="container" style="margin-top: 30px">
 	<c:if test="${not empty msg}">
 		<div class="alert alert-${css} alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert"
@@ -14,37 +14,34 @@
 	</c:if>
 
 	<div class="row md-col-8">
-		<h2>Search From</h2>
-		<spring:url value="/${book.id}" var="searchActionUrl" />
-		<form:form action="searchActionUrl" method="GET"
-			modelAttribute="book" cssClass="form-horizontal">
+		<h2>Quản lí User</h2>
+		<form action="searchActionUrl" method="GET" class="form-horizontal">
 			<table>
 				<tr>
-					<th>Name&nbsp;&nbsp;</th>
-					<td><form:input path="name" cssClass="form-control" /> <form:errors
-							path="name" cssClass="error" /></td>
-					<th style="padding-left: 28px;">Price&nbsp;&nbsp;</th>
-					<td><form:input path="price" cssClass="form-control" /> <form:errors
-							path="price" cssClass="error" /></td>
-					<td style="padding-left: 28px;"><button type="submit">Search</button></td>
+					<th>Tên&nbsp;&nbsp;</th>
+					<td><input name="fullname" class="form-control" /></td>
+					<th style="padding-left: 28px;">Email&nbsp;&nbsp;</th>
+					<td><input name="price" class="form-control" /></td>
+					<td style="padding-left: 28px;"><button type="submit"
+							class="btn">Tìm kiếm</button></td>
 				</tr>
 			</table>
-		</form:form>
+		</form>
 	</div>
 	<div class="row" style="margin-top: 20px">
 		<div class="md-col-8">
 			<fieldset>
-				<legend>
-					<h2>Book List</h2>
-				</legend>
+				<legend> </legend>
 				<table class="table table-hover table-dark">
 					<thead class="bg-primary">
 						<tr>
 							<th scope="col">#</th>
-							<th scope="col">Name</th>
-							<th scope="col">Author</th>
-							<th scope="col">Price</th>
-							<th></th>
+							<th scope="col">Username</th>
+							<th scope="col">Tên</th>
+							<th scope="col">Email</th>
+							<th scope="col">Giới tính</th>
+							<th scope="col">Ngày sinh</th>
+							<th scope="col">Online?</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -54,16 +51,19 @@
 								<td>${book.name}</td>
 								<td>${book.author.name}</td>
 								<td>${book.price}</td>
-								<td><spring:url value="/${student.id}"
+								<td></td>
+								<td></td>
+								<td></td>
+								<td><spring:url value="/user/${book.id}/detail"
 										var="detailActionUrl" />
 									<button class="btn btn-info"
-										onclick="location.href='${detailActionUrl}'">Detail</button> <spring:url
-										value="/${student.id}/edit" var="editActionUrl" />
+										onclick="location.href='${detailActionUrl}'">Chi tiết</button>
+									<spring:url value="/user/${book.id}/edit" var="editActionUrl" />
 									<button class="btn btn-warning"
-										onclick="location.href='${editActionUrl}'">Edit</button> <spring:url
-										value="/${student.id}/delete" var="deleteActionUrl" />
+										onclick="location.href='${editActionUrl}'">Sửa</button> <spring:url
+										value="/user/${student.id}/delete" var="deleteActionUrl" />
 									<button class="btn btn-danger"
-										onclick="location.href='${deleteActionUrl}'">Delete</button></td>
+										onclick="location.href='${deleteActionUrl}'">Xóa</button></td>
 							</tr>
 						</c:forEach>
 					</tbody>

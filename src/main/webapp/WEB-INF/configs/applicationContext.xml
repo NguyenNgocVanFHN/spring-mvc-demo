@@ -27,10 +27,10 @@
 	</mvc:annotation-driven>
 
 	<!-- Load message.properties. As I18n -->
-	<bean id="messageSource"
+	<!-- <bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:messages" />
 		<property name="fallbackToSystemLocale" value="false" />
-	</bean>
+	</bean> -->
 
 </beans>
